@@ -1,10 +1,10 @@
 import { Button } from "native-base";
 
-const ButtonOne = ({ mt, bg, color, onPress, children }) => {
+const ButtonOne = ({ width, mt, bg, color, onPress, children }) => {
   return (
     <>
       <Button
-        w="full"
+        w={width}
         h={55}
         mt={mt}
         rounded="full"
