@@ -1,15 +1,32 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Box, Button, Center, HStack, Text } from "native-base";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import Colors from "../../../../helpers/Colors";
 import CartEmpty from "./CartEmpty";
 import CartItemList from "./CartItemList";
 import ButtonOne from "../../../buttons/ButtonOne";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../../../redux/actions/cart.actions";
 
-const CartScreen = () => {
+const CartScreen = ({ route }) => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+  const product = route.params;
+
+  const allCartItems = useSelector((state) => state.allCartProducts);
+
+  const userDetails = useSelector((state) => state?.user);
+
+  useEffect(() => {
+    const userId = userDetails.user?.data?.user?._id;
+    const productId = product.id;
+    const formData = { userId, productId };
+
+    dispatch(cartActions.addProduct(product));
+  }, [product]);
+
   return (
     <>
       <Box flex={1} safeAreaTop bg={Colors.subGreen}>
