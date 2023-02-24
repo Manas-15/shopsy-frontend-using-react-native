@@ -5,6 +5,7 @@ import {
   Image,
   ScrollView,
   Spacer,
+  Stack,
   Text,
   View,
 } from "native-base";
@@ -21,6 +22,14 @@ const ProductDetailScreen = ({ route }) => {
   const navigation = useNavigation();
   const [quantity, setQuantity] = useState(0);
   const product = route.params;
+
+  const addToCart = (prod) => {
+    console.log(prod);
+    navigation.navigate("Cart", prod);
+  };
+  const buyNow = () => {
+    navigation.navigate("Shipping");
+  };
   return (
     <>
       <Box safeAreaTop={10} flex={1} bg={Colors.white}>
@@ -59,14 +68,28 @@ const ProductDetailScreen = ({ route }) => {
           <Text fontSize={14} lineHeight={22}>
             {product.description}
           </Text>
-          <ButtonOne
-            onPress={() => navigation.navigate("Cart")}
-            color={Colors.white}
-            bg={Colors.main}
-            mt="2"
-          >
-            ADD TO CART
-          </ButtonOne>
+
+          <HStack space={3} alignItems="center">
+            <ButtonOne
+              onPress={() => addToCart(product)}
+              color={Colors.white}
+              bg={Colors.black}
+              mt="2"
+              width="150"
+            >
+              ADD TO CART
+            </ButtonOne>
+            <ButtonOne
+              onPress={() => buyNow()}
+              color={Colors.white}
+              bg={Colors.main}
+              mt="2"
+              width="150"
+            >
+              BUY NOW
+            </ButtonOne>
+          </HStack>
+
           <ProductReview />
         </ScrollView>
       </Box>
