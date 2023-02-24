@@ -25,8 +25,10 @@ import PaymentScreen from "./src/components/screens/shop/Shipping/PaymentScreen"
 import PlaceOrderScreen from "./src/components/screens/shop/Shipping/PlaceOrderScreen";
 import { Provider } from "react-redux";
 import { store } from "./src/helpers/Store";
+import setupInterceptors from "./src/redux/services/setupInterceptors";
 
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     <Provider store={store}>
@@ -66,32 +68,6 @@ export default function App() {
         {/* <NotVerifyScreen /> */}
       </NativeBaseProvider>
     </Provider>
-
-    // <NavigationContainer>
-    //   <Stack.Navigator
-    //   >
-    //
-    //     <Stack.Screen
-    //       name="UserLogIn"
-    //       component={UserLoginScreen}
-    //       options={{ title: "User Login" }}
-    //     />
-    //     <Stack.Screen
-    //       name="Signup"
-    //       component={UserSignupScreen}
-    //       options={{ title: "User Signup", headerBackVisible: false }}
-    //     />
-    //     <Stack.Screen
-    //       name="ForgotPassword"
-    //       component={ResetPasswordScreen}
-    //       options={{ title: "Forgot Password", headerBackVisible: true }}
-    //     />
-    //     <Stack.Screen
-    //       name="UserPanelTab"
-    //       component={UserPanelTab}
-    //       options={{ headerShown: false }}
-    //     />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
   );
 }
+setupInterceptors(store);
