@@ -2,6 +2,7 @@ import { userConstants } from "../constants/user.constants";
 import { userService } from "../services/user.service";
 // import TokenService from "../services/token.service";
 import axios from "axios";
+import TokenService from "../services/token.service";
 
 export const userActions = {
   signup,
@@ -56,6 +57,7 @@ function login(user) {
       .login(user)
       .then((data) => {
         dispatch(success(data));
+        TokenService.setUser(data);
       })
       .catch((error) => {
         dispatch(failure(error.toString()));
