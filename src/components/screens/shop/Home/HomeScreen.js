@@ -14,7 +14,7 @@ import {
   View,
 } from "react-native";
 import HomeSearch from "./HomeSearch";
-import HomeProducts from "./HomeProduct";
+import ProductList from "../Product/ProductList";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +22,7 @@ const HomeScreen = () => {
   return (
     <>
       <HomeSearch />
-      <HomeProducts />
+      <ProductList />
     </>
   );
 };
