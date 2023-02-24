@@ -34,6 +34,8 @@ export const UserLoginScreen = () => {
     console.log("calling submit");
   };
   const handleFormSubmit = async () => {
+    // navigation.navigate("Bottom");
+
     if (email && password) {
       console.log("11111");
       const strategy = "local";
@@ -55,9 +57,6 @@ export const UserLoginScreen = () => {
   };
 
   const userDetails = useSelector((state) => state?.user);
-  console.log(
-    "userDetailsuserDetailsuserDetails>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-  );
 
   useEffect(() => {
     // const findUser = async () => {
@@ -69,7 +68,7 @@ export const UserLoginScreen = () => {
       navigation.navigate("LogIn");
     }
     // findUser();
-  }, []);
+  }, [userDetails]);
   return (
     <>
       <Box flex={1} bg={Colors.white}>
