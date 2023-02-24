@@ -36,7 +36,7 @@ const BottomNav = () => {
     <>
       <Tab.Navigator
         backBehavior="Main"
-        initialRouteName="Main"
+        initialRouteName="Profile"
         screenOptions={{
           tabBarShowLabel: false,
           tabBarStyle: { ...styles.tab },
@@ -47,7 +47,7 @@ const BottomNav = () => {
         {/* Home screen  */}
         <Tab.Screen
           name="Main"
-          component={StackNav}
+          component={HomeScreen}
           options={{
             tabBarIcon: ({ focused }) => (
               <Center>
